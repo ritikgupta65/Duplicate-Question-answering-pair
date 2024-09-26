@@ -10,15 +10,16 @@ app = Flask(__name__)
 # Load the trained model and other necessary objects
 model_path = 'model.pkl'
 cv_path = 'cv.pkl'
-# stopwords_path = 'stopwords.pkl'
+stopwords_path = 'stopwords.pkl'
 
 with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
 cv = pickle.load(open(cv_path, 'rb'))
-# STOP_WORDS = pickle.load(open(stopwords_path, 'rb'))
-from nltk.corpus import stopwords
-STOP_WORDS = stopwords.words("english")
+STOP_WORDS = pickle.load(open(stopwords_path, 'rb'))
+# import nltk
+# from nltk.corpus import stopwords
+# STOP_WORDS = stopwords.words("english")
 
 @app.route('/')
 def home():
